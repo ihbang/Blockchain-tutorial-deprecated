@@ -49,6 +49,6 @@
 .history
 .ionide
 
-# Support for Project snippet scope
+bin/*
 
 # End of https://www.toptal.com/developers/gitignore/api/visualstudiocode,c++

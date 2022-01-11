@@ -1,7 +1,7 @@
 /**
  * Copyright 2022 Inhyeok Bang
  *
- * @brief     Blockchain tutorial project 'TestChain' with C++
+ * @brief     Blockchain toy project 'TestChain' with C++
  * @file      blockchain.h
  * @reference https://davenash.com/2017/10/build-a-blockchain-with-c/
  */
