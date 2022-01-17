@@ -36,12 +36,12 @@ void RSA::setParameters(int256_t p, int256_t q, int256_t r) {
 
   if (!isPrime(p) || !isPrime(q))  // p and q must be prime numbers
   {
-    throw std::exception("[ERROR] p or q is not a prime number!");
+    throw std::invalid_argument("[ERROR] p or q is not a prime number!");
   } else if ((r < m) && (r > 1) &&
              (Euclidean::euclidean(r, phi_of_m) !=
               1))  // r and phi of m must be coprime
   {
-    throw std::exception(
+    throw std::invalid_argument(
         "[ERROR] r is not equal or less than p * q (=> m), or r and phi of m "
         "are not coprime!");
   }
@@ -49,7 +49,7 @@ void RSA::setParameters(int256_t p, int256_t q, int256_t r) {
 
 void RSA::calcKeys() {
   if (private_key != nullptr || public_key != nullptr) {
-    throw std::exception("[ERROR] Keys already calculated!");
+    throw std::logic_error("[ERROR] Keys already calculated!");
   }
 
   calcPublicKey();
