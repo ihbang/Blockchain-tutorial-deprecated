@@ -49,6 +49,6 @@
 .history
 .ionide
 
-bin/*
+bin
 
 # End of https://www.toptal.com/developers/gitignore/api/visualstudiocode,c++
