@@ -9,11 +9,29 @@
 // Self header
 #include "block.h"
 
+#include <iomanip>
 #include <sstream>
 
-#include "sha256/sha256.h"
+#include "openssl/sha.h"
 
 using std::string;
+
+/**
+ * convert openssl sha256 function to generate c++ style string
+ * reference: https://cypsw.tistory.com/70
+ */
+string sha256(const string str) {
+  unsigned char digest[SHA256_DIGEST_LENGTH];
+  std::stringstream ss;
+
+  SHA256((const unsigned char*)str.c_str(), str.length(), digest);
+
+  for (int i = 0; i < SHA256_DIGEST_LENGTH; ++i) {
+    ss << std::hex << std::setw(2) << std::setfill('0')
+       << static_cast<int>(digest[i]);
+  }
+  return ss.str();
+}
 
 Block::Block(uint32_t index, const string& data)
     : index_(index), nonce_(-1), data_(data), time_(time(nullptr)) {}
